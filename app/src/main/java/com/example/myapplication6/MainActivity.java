@@ -12,25 +12,27 @@ import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity {
-private EditText editText;
+
+    private EditText editText;
+    public TextView textView;
 private Button btn;
-private TextView textView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-         textView = findViewById(R.id.text);
+        textView = findViewById(R.id.text);
         editText = findViewById(R.id.editText);
         btn = findViewById(R.id.btn);
 
-        Intent intent = new Intent(MainActivity.this,MainActivity2.class);
 btn.setOnClickListener(new View.OnClickListener() {
     @SuppressLint("ResourceType")
     @Override
     public void onClick(View view) {
-        startActivity(intent);
+        Intent intent = new Intent(MainActivity.this,MainActivity2.class);
         String text = editText.getText().toString();
-        textView.setText(text);
+        intent.putExtra("text",text);
+        startActivity(intent);
         finish();
     }
 });
